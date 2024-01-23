@@ -1,0 +1,15 @@
+.root {
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+}
+
+.content {
+    padding: 20px;
+    background-color: #F8F9FA;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}

@@ -1,0 +1,29 @@
+.root {
+    color: #777777;
+    margin-top: 40px;
+}
+
+.reviews__title {
+    margin: 5px 0;
+}
+
+.reviews__list {
+    padding: 0 20px;
+    margin: 0;
+}
+
+.reviews__item {
+    padding-top: 5px;
+}
+
+.reviews__text {
+    font-style: italic;
+}
+
+.reviews__user {
+    text-align: right;
+}
+
+.reviews__rating {
+    color: #000000;
+}

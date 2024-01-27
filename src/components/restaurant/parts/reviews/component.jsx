@@ -1,17 +1,14 @@
 import styles from './styles.module.css';
+import {Review} from "../review/component.jsx";
 
-export const Reviews = ({children}) => {
+export const Reviews = ({list}) => {
     return (
         <div className={styles.root}>
             <h4 className={styles.reviews__title}>Reviews:</h4>
             <ul className={styles.reviews__list}>
-                {children.map(child => (
+                {list.map(item => (
                     <li className={styles.reviews__item}>
-                        <div>
-                            <div className={styles.reviews__rating}>Rating: *{child.rating}</div>
-                            <div className={styles.reviews__text}>{child.text}</div>
-                            <div className={styles.reviews__user}>{child.user}</div>
-                        </div>
+                        <Review data={item}/>
                     </li>))}
             </ul>
         </div>

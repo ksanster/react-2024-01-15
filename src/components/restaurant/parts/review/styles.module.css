@@ -1,0 +1,11 @@
+.text {
+    font-style: italic;
+}
+
+.user {
+    text-align: right;
+}
+
+.rating {
+    color: #000000;
+}

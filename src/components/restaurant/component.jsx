@@ -6,8 +6,8 @@ export const Restaurant = ({data}) => {
     return (
         <div className={styles.root}>
             <h3 className={styles.title}>{data.name}</h3>
-            <Menu>{data.menu}</Menu>
-            <Reviews>{data.reviews}</Reviews>
+            <Menu dishes={data.menu}/>
+            <Reviews list={data.reviews}/>
         </div>
     );
 }

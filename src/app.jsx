@@ -7,9 +7,7 @@ export const App = () => {
     return (
         <Layout>
             {
-                restaurants.map((restaurant) => (
-                    <Restaurant data={restaurant} />
-                ))
+                restaurants.map((item) => <Restaurant data={item} />)
             }
         </Layout>
     );

@@ -7,9 +7,8 @@ export const Menu = ({dishes}) => {
           <h4 className={styles.menu__title}>Menu</h4>
           <ul className={styles.menu__list}>
               {dishes.map((dish) => {
-                  console.log(dish.name, dish.price)
                   return (
-                      <li>
+                      <li key={dish.id}>
                           <Dish data={dish} />
                       </li>
                   );

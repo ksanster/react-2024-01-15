@@ -9,7 +9,5 @@
 .content {
     padding: 20px;
     background-color: #F8F9FA;
-    display: flex;
-    flex-wrap: wrap;
     gap: 30px;
 }

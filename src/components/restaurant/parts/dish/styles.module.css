@@ -1,4 +1,14 @@
+.root {
+    display: grid;
+    grid-template-columns: 1fr 100px 200px;
+    padding: 2px 0 2px;
+}
+
 .price {
     margin-left: 20px;
     font-weight: bold;
+}
+
+.controls {
+    text-align: right;
 }

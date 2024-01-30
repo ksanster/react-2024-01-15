@@ -1,9 +1,10 @@
 import styles from './styles.module.css';
 
-export const Tab = ({item, onClick, isActive}) => {
+export const Tab = ({id, name, onClick, isActive}) => {
     return (
-        <label className={`${styles.root} ${isActive ? styles.active : ''}`} onClick={() => onClick(item.id)}>
-            {item.name}
+        <label className={`${styles.root} ${isActive ? styles.active : ''}`}
+               onClick={() => onClick(id)}>
+            {name}
         </label>
     );
 }

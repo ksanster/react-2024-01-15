@@ -5,13 +5,13 @@ import {useState} from "react";
 const MinValue = 0;
 const MaxValue = 5;
 
-export const Dish = ({data}) => {
+export const Dish = ({name, price}) => {
     const [count, setCount] = useState(0);
 
     return (
         <div className={styles.root}>
-            <span>{data.name}</span>
-            <span className={styles.price}>${data.price}</span>
+            <span>{name}</span>
+            <span className={styles.price}>${price}</span>
             <span className={styles.controls}>
                 <Button disabled={count === MinValue} onClick={
                     () => {

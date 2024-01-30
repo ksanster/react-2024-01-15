@@ -9,7 +9,7 @@ export const Menu = ({dishes}) => {
               {dishes.map((dish) => {
                   return (
                       <li key={dish.id}>
-                          <Dish data={dish} />
+                          <Dish name={dish.name} price={dish.price} />
                       </li>
                   );
               })}

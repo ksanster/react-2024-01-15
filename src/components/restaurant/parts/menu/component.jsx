@@ -7,10 +7,9 @@ export const Menu = ({dishes}) => {
           <h4 className={styles.menu__title}>Menu</h4>
           <ul className={styles.menu__list}>
               {dishes.map((dish) => {
-                  console.log(dish.name, dish.price)
                   return (
-                      <li>
-                          <Dish data={dish} />
+                      <li key={dish.id}>
+                          <Dish name={dish.name} price={dish.price} />
                       </li>
                   );
               })}

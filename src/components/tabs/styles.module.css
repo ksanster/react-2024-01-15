@@ -1,0 +1,10 @@
+.root {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    row-gap: 8px;
+    column-gap: 40px;
+    justify-content: start;
+
+    margin: 0 auto 10px;
+    padding: 0 15px 0 16px;
+}

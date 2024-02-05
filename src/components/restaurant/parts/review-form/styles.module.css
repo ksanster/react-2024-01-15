@@ -8,3 +8,8 @@
     grid-template-columns: 70px 1fr;
     margin: 2px 0;
 }
+
+.name {
+    font-weight: bold;
+    font-style: italic;
+}

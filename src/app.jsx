@@ -2,31 +2,31 @@ import {Layout} from "./components/layout/component.jsx";
 import {Restaurant} from "./components/restaurant/component.jsx";
 import React, {createContext, useState} from "react";
 import {Tabs} from "./components/tabs/tabs.jsx";
-import { restaurants } from './constants/mock.js'
+import {Provider} from "react-redux";
+import {store} from "./store/index.js";
 
 export const UserContext = createContext(null);
 
 export const App = () => {
-    const [selectedRestaurant, setSelectedRestaurant] = useState();
+    const [selectedRestaurantId, setSelectedRestaurantId] = useState();
     const [user, setUser] = useState(null);
 
     const handleChange = (id) => {
-        const restaurant = restaurants.find(restaurant => restaurant.id === id);
-        setSelectedRestaurant(restaurant);
+        setSelectedRestaurantId(id);
     }
 
     return (
-        <UserContext.Provider value={ {user, setUser} }>
-            <Layout>
-                <Tabs source={restaurants} onClick={handleChange} selectedId={selectedRestaurant?.id}/>
-                {selectedRestaurant &&
-                    <Restaurant
-                        key={selectedRestaurant.id}
-                        name={selectedRestaurant.name}
-                        dishes={selectedRestaurant.menu}
-                        reviews={selectedRestaurant.reviews} />
-                }
-            </Layout>
-        </UserContext.Provider>
+        <Provider store={store}>
+            <UserContext.Provider value={ {user, setUser} }>
+                <Layout>
+                    <Tabs onClick={handleChange} selectedId={selectedRestaurantId}/>
+                    {selectedRestaurantId &&
+                        <Restaurant
+                            key={selectedRestaurantId}
+                            id={selectedRestaurantId} />
+                    }
+                </Layout>
+            </UserContext.Provider>
+        </Provider>
     );
 };

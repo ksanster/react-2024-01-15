@@ -15,7 +15,7 @@ export const Restaurant = ({id}) => {
         <div className={styles.root}>
             <h3 className={styles.title}>{restaurant.name}</h3>
             <Menu dishIds={restaurant.menu} />
-            <Reviews reviewIds={restaurant.reviews} />
+            {<Reviews restaurantId={id} reviewIds={restaurant.reviews} />}
             {user && <ReviewForm username={user.name} minRating='0' maxRating='5' />}
         </div>
     );

@@ -9,6 +9,7 @@ export const Layout = ({children}) => {
             <Header/>
             <main className={styles.content}>{children}</main>
             <Footer/>
+            <div id='popup-container' className={styles.popupContainer} />
         </div>
     );
 }

@@ -42,7 +42,7 @@ export const ReviewForm = ({restaurantId, username, minRating, maxRating}) => {
         dispatch({type: 'clear'})
     }
 
-    const { data: myReview } = useGetReviewsQuery(restaurantId, {
+    const { data: myReview, isFetching } = useGetReviewsQuery(restaurantId, {
         selectFromResult: (result) => {
             return ({
                 ...result,
@@ -50,12 +50,11 @@ export const ReviewForm = ({restaurantId, username, minRating, maxRating}) => {
             })
         }
     });
-    const hasMyReview = !!myReview;
-
+    const hasMyReview = !!myReview || isFetching;
 
     return (
         hasMyReview
-            ? <div className={styles.sent}>Review already sent</div>
+            ? <div className={styles.sent}>{ isFetching ? 'Loading...' : 'Review already sent' }</div>
             : <form name='review-form'>
                 <div className={styles.root}>
                     <div className={styles.field}>

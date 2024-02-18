@@ -1,39 +1,23 @@
 import styles from './styles.module.css';
 import {Dish} from "../dish/component.jsx";
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {selectIsReady} from "../../../../store/ui/request/index.js";
-import {getDishes} from "../../../../store/entities/dish/thunks/get-dishes.js";
-import {hasMenuForRestaurant} from "../../../../store/entities/dish/selector.js";
+import {useGetDishesQuery} from "../../../../store/services/api.js";
 
-export const Menu = ({restaurantId, dishIds}) => {
-    const [requestId, setRequestId] = useState();
-
-    const isReady =  useSelector(
-        (state) => {
-            if (hasMenuForRestaurant(state, restaurantId)) {
-                return true;
-            }
-            return requestId && selectIsReady(state, requestId)
-        }
-    );
-    const dispatch = useDispatch();
-    useEffect(() => {
-        setRequestId(dispatch(getDishes(restaurantId)).requestId);
-    }, [dispatch]);
+export const Menu = ({restaurantId}) => {
+    const { isLoading } = useGetDishesQuery(restaurantId);
+    const { data: dishes } = useGetDishesQuery(restaurantId);
 
     return (
       <div className={styles.root}>
           <h4 className={styles.menu__title}>Menu</h4>
           {
-              !isReady
+              isLoading
                   ? (<span>Loading...</span>)
                   : (
                       <ul className={styles.menu__list}>
-                          {dishIds.map((dishId) => {
+                          {dishes.map((dish) => {
                               return (
-                                  <li key={dishId}>
-                                      <Dish id={dishId} />
+                                  <li key={dish.id}>
+                                      <Dish id={dish.id} name={dish.name} price={dish.price} />
                                   </li>
                               );
                           })}

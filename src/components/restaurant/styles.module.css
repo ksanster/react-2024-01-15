@@ -12,3 +12,9 @@
     margin: 0;
     text-align: center;
 }
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}

@@ -1,33 +1,23 @@
-import {Layout} from "../components/layout/component.jsx";
 import {Tabs} from "../components/tabs/tabs.jsx";
-import {Restaurant} from "../components/restaurant/component.jsx";
-import React, {useState} from "react";
+import React from "react";
 import {useGetRestaurantsQuery} from "../store/services/api.js";
+import {Outlet, useParams} from "react-router-dom";
 
 export const RestaurantPage = () => {
-    const [selectedRestaurantId, setSelectedRestaurantId] = useState();
-
+    const params = useParams();
 
     const { isLoading } = useGetRestaurantsQuery();
 
     return (
-        <Layout>
-            {
-                isLoading
-                    ? (
-                        <div>Loading...</div>
-                    )
-                    : (
-                        <>
-                            <Tabs onClick={setSelectedRestaurantId} selectedId={selectedRestaurantId}/>
-                            {selectedRestaurantId &&
-                                <Restaurant
-                                    key={selectedRestaurantId}
-                                    restaurantId={selectedRestaurantId} />
-                            }
-                        </>
-                    )
-            }
-        </Layout>
+            isLoading
+                ? (
+                    <div>Loading...</div>
+                )
+                : (
+                    <>
+                        <Tabs selectedId={params.restaurantId}/>
+                        <Outlet />
+                    </>
+                )
     )
 }

@@ -1,8 +1,11 @@
 import styles from './styles.module.css';
 import {Dish} from "../dish/component.jsx";
 import {useGetDishesQuery} from "../../../../store/services/api.js";
+import {useParams} from "react-router-dom";
 
-export const Menu = ({restaurantId}) => {
+export const Menu = () => {
+    const restaurantId = useParams();
+    console.log(restaurantId)
     const { isLoading } = useGetDishesQuery(restaurantId);
     const { data: dishes } = useGetDishesQuery(restaurantId);
 

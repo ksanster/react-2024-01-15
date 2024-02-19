@@ -23,8 +23,7 @@ export const api = createApi({
         }),
         getDishById: builder.query({
             query: (dishId) => ({
-                url: 'dish',
-                params: {dishId}
+                url: `dish/${dishId}`
             })
         }),
         getReviews: builder.query({
@@ -61,7 +60,8 @@ export const {
     useGetRestaurantsQuery,
     useGetDishesQuery,
     useGetReviewsQuery,
-    useCreateReviewMutation
+    useCreateReviewMutation,
+    useGetDishByIdQuery
 } = api;
 
 export const { middleware } = api;

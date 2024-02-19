@@ -1,15 +1,16 @@
 import styles from './styles.module.css';
 import {Review} from "../review/component.jsx";
 import {useGetReviewsQuery} from "../../../../store/services/api.js";
+import {useParams} from "react-router-dom";
 
-export const Reviews = ({restaurantId}) => {
+export const Reviews = () => {
 
-    const { isLoading } = useGetReviewsQuery(restaurantId);
-    const { data: reviews } = useGetReviewsQuery(restaurantId);
+    const params = useParams();
+    const { isLoading } = useGetReviewsQuery(params.restaurantId);
+    const { data: reviews } = useGetReviewsQuery(params.restaurantId);
 
     return (
         <div className={styles.root}>
-            <h4 className={styles.reviews__title}>Reviews:</h4>
             {
                 isLoading
                     ? (<span>Loading...</span>)

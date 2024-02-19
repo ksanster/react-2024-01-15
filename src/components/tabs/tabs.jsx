@@ -1,22 +1,21 @@
 import styles from './styles.module.css';
 import {Tab} from "../tab/tab.jsx";
-import {useSelector} from "react-redux";
-import {selectRestaurantIds} from "../../store/entities/restaurant/selector.js";
 import {useGetRestaurantsQuery} from "../../store/services/api.js";
+import {NavLink} from "react-router-dom";
 
-export const Tabs = ({onClick, selectedId}) => {
+export const Tabs = ({selectedId}) => {
     const { data: restaurants } = useGetRestaurantsQuery();
     return (
         <div className={styles.root}>
             {
                 restaurants.map(({id, name}) => (
-                    <Tab
-                        key={id}
-                        id={id}
-                        title={name}
-                        onClick={onClick}
-                        isActive={id === selectedId}
-                    />
+                    <NavLink key={id} to={`/restaurants/${id}`} className={styles.link} >
+                        <Tab
+                            title={name}
+                            isActive={id === selectedId}
+                            onClick={() => {}}
+                        />
+                    </NavLink>
                 ))
             }
         </div>
